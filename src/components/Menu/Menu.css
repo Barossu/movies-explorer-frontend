@@ -1,0 +1,126 @@
+.menu__background{
+  position: fixed;
+  background-color: rgba(0, 0, 0, .3);
+  z-index: 2;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s linear, opacity 0.3s linear;
+}
+
+.menu__background_opened{
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu{
+  position: fixed;
+  top: 0;
+  right: -520px;
+  z-index: 3;
+  width: 520px;
+  height: 100vh;
+  background-color: #202020;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s linear;
+}
+
+.menu_opened{
+  transform: translate(-520px);
+}
+
+.menu__close{
+  background: none;
+  background-image: url(../../images/close-icon.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 0;
+  border: none;
+  width: 29px;
+  height: 29px;
+  margin: 23px 23px 86px auto;
+  transition: opacity 0.3s linear;
+}
+
+.menu__close:hover{
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.menu__link{
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.21;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  padding: 0 0 6px 0;
+  margin: 22px auto 0 auto;
+  transition: opacity 0.3s linear;
+}
+
+.menu__link:hover{
+  opacity: 0.7;
+}
+
+.menu__link_bordered{
+  border-bottom: 2px solid white;
+  padding: 0 0 4px 0;
+}
+
+.menu__button{
+  margin: auto auto 92px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.menu__button-text{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  margin: 0 13px 0 0;
+  align-self: center;
+}
+
+.menu__button-image{
+  background-image: url(../../images/icon_profile.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #313131;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  transition: opacity 0.3s linear;
+}
+
+.menu__button-image:hover{
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 320px) {
+  .menu{
+    right: -320px;
+    width: 320px;
+    height: 100vh;
+  }
+
+  .menu_opened{
+    transform: translate(-320px);
+  }
+
+  .menu__link{
+    padding: 0 0 6px 0;
+    margin: 17px auto 0 auto;
+  }
+
+  .menu__close{
+    margin: 14px 14px 85px auto;
+  }
+}

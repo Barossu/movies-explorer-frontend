@@ -1,0 +1,164 @@
+.about-project{
+  background-color: #202020;
+  max-width: 1140px;
+  padding: 110px 0 99px 0;
+  margin: 0 auto;
+}
+
+.about-project__title{
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.21;
+  letter-spacing: -0.04em;
+  margin: 0 0 70px 0;
+  padding: 0 0 23px 0;
+  border-bottom: 1px solid #DADADA;
+}
+
+.about-project__container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.about-project__info{
+  width: 550px;
+}
+
+.about-project__subtitle{
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.21;
+  letter-spacing: -0.04em;
+  margin: 0 0 26px 0;
+}
+
+.about-project__text{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0 0 110px 0;
+}
+
+.about-project__grid{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: repeat(2, 36px);
+  row-gap: 5px;
+}
+
+.about-project__back-time{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.21;
+  margin: 0;
+  color: #000;
+  background-color: #3DDC84;
+  text-align: center;
+  padding: 9px 0;
+}
+
+.about-project__front-time{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.21;
+  margin: 0;
+  background-color: #303030;
+  text-align: center;
+  padding: 9px 0;
+}
+
+.about-project__work{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  margin: 0;
+  color: #8B8B8B;
+  text-align: center;
+  padding: 9px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project{
+    max-width: 768px;
+    padding: 90px 50px 81px;
+  }
+
+  .about-project__info{
+    width: 319px;
+  }
+
+  .about-project__subtitle{
+    margin: 0 0 22px 0;
+  }
+
+  .about-project__text{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    margin: 0 0 93px 0;
+  }
+
+  .about-project__grid{
+    display: grid;
+    grid-template-columns: minmax(min-content, 140px) minmax(min-content, 528px);
+    grid-template-rows: repeat(2, 36px);
+    row-gap: 5px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-project{
+    max-width: 320px;
+    padding: 71px 18px 81px;
+  }
+
+  .about-project__title{
+    font-size: 18px;
+    padding: 0 0 27px 0;
+    margin: 0 0 60px 0;
+  }
+
+  .about-project__container{
+    flex-direction: column;
+    justify-content: start;
+  }
+    
+  .about-project__info{
+    width: 284px;
+  }
+
+  .about-project__subtitle{
+    font-size: 18px;
+    margin: 0 0 16px 0;
+  }
+
+  .about-project__text{
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0 0 57px 0;
+  }
+
+  .about-project__grid{
+    margin: 3px 0 0 0;
+    grid-template-columns: 100px 184px;
+    grid-template-rows: repeat(2, 35px);
+    row-gap: 2px;
+  }
+
+  .about-project__back-time{
+    font-size: 11px;
+    padding: 12px 0;
+  }
+  
+  .about-project__front-time{
+    font-size: 11px;
+    padding: 12px 0;
+  }
+
+  .about-project__work{
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.21;
+  }
+}
