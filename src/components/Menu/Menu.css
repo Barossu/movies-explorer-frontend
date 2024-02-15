@@ -13,7 +13,7 @@
   opacity: 1;
 }
 
-.menu{
+.menu__slider{
   position: fixed;
   top: 0;
   right: -520px;
@@ -105,7 +105,7 @@
 }
 
 @media screen and (max-width: 320px) {
-  .menu{
+  .menu__slider{
     right: -320px;
     width: 320px;
     height: 100vh;

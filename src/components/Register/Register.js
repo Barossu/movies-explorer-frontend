@@ -14,20 +14,20 @@ function Register() {
         <label className="register__input-container">
           <span className="register__input-name">Имя</span>
           <input className="register__input" type="text" defaultValue='Павел' placeholder="Имя"></input>
-          <span className="register__input-error">Что-то пошло не так...</span>
+          <span className="register__input-error"></span>
         </label>
         <label className="register__input-container">
           <span className="register__input-name" lang="en">E-mail</span>
           <input className="register__input" type="email" defaultValue='email@email.email' placeholder="E-mail"></input>
-          <span className="register__input-error">Что-то пошло не так...</span>
+          <span className="register__input-error"></span>
         </label>
         <label className="register__input-container">
           <span className="register__input-name">Пароль</span>
-          <input className="register__input" type="password" defaultValue='qwerty123' placeholder="Пароль"></input>
+          <input className="register__input register__input_error-color" type="password" defaultValue='qwerty123' placeholder="Пароль"></input>
           <span className="register__input-error">Что-то пошло не так...</span>
         </label>
         <p className="register__error">Что-то пошло не так...</p>
-        <button className="register__submit-button register__submit-button_unactive">Зарегистрироваться</button>
+        <button type="submit" className="register__submit-button register__submit-button_unactive">Зарегистрироваться</button>
       </form>
       <p className="register__text">Уже зарегистрированы? <Link className="register__signin-link" to='/signin'>Войти</Link></p>
     </main>

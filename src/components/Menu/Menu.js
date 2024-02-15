@@ -11,9 +11,9 @@ function Menu({ handleToggleMenu, onMenu }) {
   };
 
   return (
-    <>
+    <section className="menu">
       <div className={`menu__background ${onMenu ? 'menu__background_opened' : ''}`}></div>
-      <div className={`menu ${onMenu ? 'menu_opened' : ''}`}>
+      <div className={`menu__slider ${onMenu ? 'menu_opened' : ''}`}>
         <button onClick={handleToggleMenu} type="button" className="menu__close" />
         <Link to='/' className={`menu__link ${(location.pathname === '/') ? 'menu__link_bordered' : ''}`}>Главная</Link>
         <Link to='/movies' className={`menu__link ${(location.pathname === '/movies') ? 'menu__link_bordered' : ''}`}>Фильмы</Link>
@@ -23,8 +23,8 @@ function Menu({ handleToggleMenu, onMenu }) {
           <div className='menu__button-image'></div>
         </button>
       </div>    
-    </>
+    </section>
   )
 };
 
-export default Menu;
+export default Menu; 

@@ -135,7 +135,7 @@
 
 @media screen and (max-width: 768px) {
   .profile{
-    padding: 125px 0 70px 0;
+    padding: 236px 0 70px 0;
   }
 
   .profile__title{
@@ -152,10 +152,15 @@
 
 @media screen and (max-width: 320px) {
   .profile{
+    padding: 70px 0 70px 0;
     max-width: 260px;
   }
 
   .profile__title{
     margin: 0 0 64px 0;
+  }
+
+  .profile__edit-button{
+    margin: 364px 0 16px 0;
   }
 }

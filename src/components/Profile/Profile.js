@@ -17,7 +17,7 @@ function Profile({ loggedIn }) {
 
   return (
     <>
-      <Header loggedIn={loggedIn} /> 
+      <Header loggedIn={loggedIn} />  
       <main className="profile">
         <h2 className="profile__title">Привет, Павел!</h2>
         <form className="profile__form">

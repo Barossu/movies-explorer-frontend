@@ -3,3 +3,13 @@
   display: flex; 
   flex-direction: column;
 }
+
+.saved-movies__main{
+  min-height: 900px;
+}
+
+@media screen and (max-width: 768px) {
+  .saved-movies__main{
+    min-height: 600px;
+  }
+}

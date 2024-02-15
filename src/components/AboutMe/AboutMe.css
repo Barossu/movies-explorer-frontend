@@ -57,7 +57,7 @@
 }
 
 .about-me__avatar{
-  width: 270px;
+  max-width: 270px;
   height: 327px;
   object-fit: cover;
   border-radius: 10px;
@@ -89,13 +89,13 @@
   }
 
   .about-me__avatar{
-    width: 255px;
+    max-width: 255px;
     height: 307px;
     margin: 0 0 40px 0;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 560px) {
   .about-me{
     max-width: 320px;
     padding: 96px 14px 41px 14px;
@@ -113,7 +113,7 @@
   }
 
   .about-me__avatar{
-    width: 292px;
+    max-width: 292px;
     height: 352px;
     object-fit: cover;
     border-radius: 10px;
