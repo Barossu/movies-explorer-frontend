@@ -14,7 +14,7 @@ function SearchForm() {
         <span className="search-form__text">Короткометражки</span>
       </label>
     </section>
-  )
+  ) 
 };
 
 export default SearchForm;

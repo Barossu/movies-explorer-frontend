@@ -15,7 +15,14 @@
 .header__go-main{
   height: 38px;
   margin: 0 auto 0 0;
+  transition: opacity 0.3s linear;
 }
+
+.header__go-main:hover{
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 
 .header__logo{
   width: 38px;

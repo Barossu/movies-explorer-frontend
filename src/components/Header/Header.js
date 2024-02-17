@@ -34,7 +34,7 @@ function Header({ loggedIn }) {
     navigate('/profile', {replace: true})
   }
 
-  function goToSignin() {
+  function goToSignin() { 
     navigate('/signin', {replace: true}) 
   }
 
@@ -55,8 +55,8 @@ function Header({ loggedIn }) {
             <Link to='/movies' className={`header__link ${(location.pathname === '/movies' ? 'header__link_on-page' : '')}`}>Фильмы</Link>
             <Link to='/saved-movies' className={`header__link ${(location.pathname === '/saved-movies' ? 'header__link_on-page' : '')}`}>Сохранённые фильмы</Link>
             <button onClick={goToProfile} type="button" className="header__button" aria-label="Аккаунт" >
-              <p className="header__button-text">Аккаунт</p>
-              <div className={`header__button-image ${(location.pathname === '/') ? 'header__button-image_blue' : ''}`}></div>
+              <span className="header__button-text">Аккаунт</span>
+              <span className={`header__button-image ${(location.pathname === '/') ? 'header__button-image_blue' : ''}`}></span>
             </button>
           </div>)
           :

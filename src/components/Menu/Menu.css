@@ -77,6 +77,12 @@
   color: white;
   display: flex;
   flex-direction: row;
+  transition: opacity 0.3s linear;
+}
+
+.menu__button:hover{
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .menu__button-text{
@@ -96,12 +102,6 @@
   width: 30px;
   height: 30px;
   border-radius: 6px;
-  transition: opacity 0.3s linear;
-}
-
-.menu__button-image:hover{
-  opacity: 0.8;
-  cursor: pointer;
 }
 
 @media screen and (max-width: 320px) {

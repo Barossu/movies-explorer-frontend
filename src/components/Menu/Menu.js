@@ -19,8 +19,8 @@ function Menu({ handleToggleMenu, onMenu }) {
         <Link to='/movies' className={`menu__link ${(location.pathname === '/movies') ? 'menu__link_bordered' : ''}`}>Фильмы</Link>
         <Link to='/saved-movies' className={`menu__link ${(location.pathname === '/saved-movies') ? 'menu__link_bordered' : ''}`}>Сохранённые фильмы</Link>
         <button onClick={goToProfile} type="button" className="menu__button" aria-label="Аккаунт" >
-          <p className='menu__button-text'>Аккаунт</p>
-          <div className='menu__button-image'></div>
+          <span className='menu__button-text'>Аккаунт</span>
+          <span className='menu__button-image'></span>
         </button>
       </div>    
     </section>

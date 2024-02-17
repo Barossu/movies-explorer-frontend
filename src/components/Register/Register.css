@@ -2,7 +2,7 @@
   max-width: 396px;
   margin: 0 auto;
   padding: 70px 0 0 0 ;
-  height: 100vh;
+  min-height: calc(100vh - 70px);
 }
 
 .register__logo{
@@ -143,14 +143,14 @@
 
 @media screen and (max-width: 768px) {
   .register{
-    padding: 232px 0 0 0;
-    height: calc(100vh - 70px);
+    padding: 232px 0 10px 0;
+    min-height: calc(100vh - 232px);
   }
 }
 
 @media screen and (max-width: 420px) {
   .register{
-    padding: 56px 0 0 0;
+    padding: 56px 0 10px 0;
     max-width: 260px;
     display: flex;
     flex-direction: column;

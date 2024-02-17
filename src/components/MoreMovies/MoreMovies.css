@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 50px 70px 80px;
 }
-
+ 
 .more-movies__button{
   width: 100%;
   height: 36px;
@@ -35,6 +35,6 @@
   .more-movies{
     max-width: 320px;
     margin: 0 auto;
-    padding: 70px 10px 77px;
+    padding: 70px 10px 52px;
   }
 }

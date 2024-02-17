@@ -1,7 +1,6 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/Inter/inter.css);
 
-/* .root{
-  background-color: #202020;
-  min-height: 100vh;
-} */
+.root{
+  min-height: 100%;
+}

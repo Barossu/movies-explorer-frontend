@@ -1,7 +1,7 @@
 .about-me{
   max-width: 1140px;
   margin: 0 auto;
-  padding: 111px 0 50px 0;
+  padding: 111px 10px 50px;
 }
 
 .about-me__title{
@@ -18,6 +18,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.about-me__column{
+  padding: 0 10px 0 0;
 }
 
 .about-me__name{
@@ -112,11 +116,16 @@
     justify-content: start;
   }
 
+  .about-me__column{
+    padding: 0;
+  }
+
   .about-me__avatar{
     max-width: 292px;
     height: 352px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 10px; 
+    align-self: center;
   }
 
   .about-me__name{

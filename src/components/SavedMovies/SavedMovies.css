@@ -5,11 +5,11 @@
 }
 
 .saved-movies__main{
-  min-height: 900px;
+  padding: 0 0 93px 0;
 }
 
 @media screen and (max-width: 768px) {
   .saved-movies__main{
-    min-height: 600px;
+    padding: 0;
   }
 }

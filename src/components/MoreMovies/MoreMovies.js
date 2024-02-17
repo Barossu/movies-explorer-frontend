@@ -9,4 +9,4 @@ function MoreMovies() {
   )
 };
 
-export default MoreMovies;
+export default MoreMovies; 

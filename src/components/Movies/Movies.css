@@ -3,3 +3,19 @@
   display: flex; 
   flex-direction: column;
 }
+
+.movies__main{
+  padding: 0 0 40px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .movies__main{
+    padding: 0 0 25px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movies__main{
+    padding: 0 0 23px 0; 
+  }
+}
