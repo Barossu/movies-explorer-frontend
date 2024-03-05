@@ -1,8 +1,12 @@
 # Фронтэнд для диплома
 
-## Ссылка на репозиторий:
+## Ссылка на PR с ветки level-3 в main:
 
-#### https://github.com/Barossu/movies-explorer-frontend
+#### https://github.com/Barossu/movies-explorer-frontend/pull/2
+
+## Ссылка на репозиторий сервера:
+
+#### https://github.com/Barossu/movies-explorer-api
 
 ## Макет (dark-04)
 

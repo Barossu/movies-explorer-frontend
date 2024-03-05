@@ -3,24 +3,14 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './Header.css'
 import Menu from '../Menu/Menu.js';
 import logoImage from '../../images/logo.png'
+import { Context } from "../../contexts/Context.js";
 
 function Header({ loggedIn }) {
   const [onMenu, setOnMenu] = React.useState(false);
-  const [width, setWidth] = React.useState(window.innerWidth)
   const location = useLocation();
   const navigate = useNavigate(); 
 
-  React.useEffect(() => {
-    function handleResize() {
-      setWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    }
-  }, [])
+  const width = React.useContext(Context).width;
 
   function handleToggleMenu() {
     if (onMenu) {

@@ -7,8 +7,25 @@ import Header from '../Header/Header.js'
 import Footer from '../Footer/Footer.js'
 import NoMovies from "../NoMovies/NoMovies.js";
 
-function Movies({ movies, loggedIn }) {
-  const supermovies = true
+function Movies({
+  handleDeleteMovie,
+  movies,
+  loggedIn,
+  setNumberOfMovies,
+  numberOfMovies,
+  numberMoreMovies
+})
+  {
+  const [resultMovies, setResultMovies] = React.useState([]); 
+
+  const handleMoreMovies = () => {
+    setNumberOfMovies(numberOfMovies + numberMoreMovies)
+  };
+
+  React.useEffect(() => {
+    setResultMovies(movies.slice(0, numberOfMovies));
+    console.log(numberOfMovies)
+  }, [numberOfMovies, movies]);
 
   return (
     <div className="saved-movies">
@@ -16,10 +33,10 @@ function Movies({ movies, loggedIn }) {
       <main className="saved-movies__main">
         <SearchForm />
         {
-          supermovies ? 
+          movies.length !== 0 ? 
             <>
-              <MoviesCardList movies={ movies } />
-              <MoreMovies />
+              <MoviesCardList handleDeleteMovie={handleDeleteMovie} movies={resultMovies} />
+              { movies.length > numberOfMovies && <MoreMovies handleMoreMovies={handleMoreMovies} /> }
             </>
           :
             <NoMovies />
@@ -30,4 +47,4 @@ function Movies({ movies, loggedIn }) {
   )
 };
 
-export default Movies;
+export default Movies; 
