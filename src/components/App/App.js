@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css'
-import Main from "../Main/Main";
+import Main from "../Main/Main"; 
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies.js";
 import Register from "../Register/Register.js";
@@ -184,7 +184,15 @@ function App() {
     auth.register(email, name, password)
       .then((res) => {
         if (res) {
-          navigate('/signin', {replace: true});
+          console.log(res)
+          // auth.authorize(email, password)
+          //   .then(() => {
+          //     handleLogin()
+          //     navigate('/movies', {replace: true});
+          //     setPassword('');
+          //     setEmail('');
+          //   })
+          //   .catch(console.error)
         }
       })
       .catch(console.error);
