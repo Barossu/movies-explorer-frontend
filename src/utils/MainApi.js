@@ -1,5 +1,5 @@
-export const BASE_URL = 'https://api.movie.kalashnikov.nomoredomainswork.ru';
-// export const BASE_URL = 'http://localhost:3000';
+//export const BASE_URL = 'https://api.movie.kalashnikov.nomoredomainswork.ru';
+export const BASE_URL = 'http://localhost:3000';
 
 const getResponse = (res) => {
   if (!res.ok) {

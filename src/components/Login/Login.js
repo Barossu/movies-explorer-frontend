@@ -39,7 +39,7 @@ function Login({ handleLogin }) {
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
     checkEmailForValidity(e.target, setEmailError);
-  }
+  } 
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);

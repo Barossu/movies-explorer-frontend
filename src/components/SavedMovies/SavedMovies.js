@@ -13,10 +13,15 @@ function Movies({
   loggedIn,
   setNumberOfMovies,
   numberOfMovies,
-  numberMoreMovies
+  numberMoreMovies,
+  handleMyMovieSearch,
+  handleCheck,
+  checked,
+  findMovie,
+  handleMovieName
 })
   {
-  const [resultMovies, setResultMovies] = React.useState([]); 
+  const [resultMovies, setResultMovies] = React.useState([]);  
 
   const handleMoreMovies = () => {
     setNumberOfMovies(numberOfMovies + numberMoreMovies)
@@ -24,14 +29,13 @@ function Movies({
 
   React.useEffect(() => {
     setResultMovies(movies.slice(0, numberOfMovies));
-    console.log(numberOfMovies)
   }, [numberOfMovies, movies]);
 
   return (
     <div className="saved-movies">
       <Header loggedIn={loggedIn} />
       <main className="saved-movies__main">
-        <SearchForm />
+        <SearchForm checked={checked} handleCheck={handleCheck} findMovie={findMovie} handleMovieName={handleMovieName} handleMyMovieSearch={handleMyMovieSearch}/>
         {
           movies.length !== 0 ? 
             <>

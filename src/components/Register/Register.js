@@ -1,10 +1,11 @@
 import React from "react";
 import './Register.css'
 import logo from "../../images/logo.png"
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import * as auth from '../../utils/auth.js'
 import { checkEmailForValidity, checkPasswordForValidity, checkNameForValidity } from "../../utils/Validation.js";
 
-function Register({ handleRegister }) {
+function Register({ handleLogin, handleRegister }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [userName, setUserName] = React.useState('')
@@ -15,6 +16,7 @@ function Register({ handleRegister }) {
   const [passwordError, setPasswordError] = React.useState('Пароль не может быть пустым');
   const [userNameError, setUserNameError] = React.useState('Имя не может быть пустым')
   const [formValid, setFormValid] = React.useState('false');
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     if (emailError || passwordError || userNameError) {
@@ -57,7 +59,18 @@ function Register({ handleRegister }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegister(email, userName, password);
+    handleRegister(email, userName, password)
+      .then((res) => {
+        if (res) {
+          auth.authorize(res.email, password)
+            .then(() => {
+              handleLogin()
+              navigate('/movies', {replace: true});
+            })
+            .catch(console.error)
+        }
+      })
+      .catch(console.error);
   }
 
 

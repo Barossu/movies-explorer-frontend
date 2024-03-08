@@ -18,7 +18,6 @@
   cursor: pointer;
 }
 
-
 .register__title{
   margin: 38px 0 39px 0;
   font-size: 24px;
@@ -61,7 +60,6 @@
 .register__input:focus{
   border-bottom: 1px solid #3456F3;
 }
-
 
 .register__input_error-color:focus{
   border-bottom: 1px solid #EE3465;
