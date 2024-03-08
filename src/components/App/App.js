@@ -11,14 +11,17 @@ import { useLocation, useNavigate, Route, Routes } from 'react-router-dom'
 import moviesApi from "../../utils/MoviesApi.js";
 import { Context } from "../../contexts/Context.js";
 import ProtectedRouteElement from '../../utils/ProtectedRoute.js';
+import ProtectedRouteAuth from "../../utils/ProtectedRouteAuth.js";
 import * as auth from '../../utils/auth.js'
 import * as mainApi from "../../utils/MainApi.js" 
 let allMovies = [];
+let allMyMovies = [];
 
 function App() { 
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [movies, setMovies] = React.useState([]);
   const [filteredMovies, setFilteredMovies] = React.useState([]);
+  const [filteredMyMovies, setFilteredMyMovies] = React.useState([]);
   const [findMovie, setFindMovie] = React.useState('');
   const [checked, setChecked] = React.useState(false);
   const [isLoad, setIsLoad] = React.useState(false);
@@ -26,7 +29,6 @@ function App() {
   const [numberMoreMovies, setNumberMoreMovies] = React.useState('');
   const [width, setWidth] = React.useState(window.innerWidth)
   const [myMovies, setMyMovies] = React.useState([])
-  const [buttonChanged, setButtonChanged] = React.useState(false)
   const [userData, setUserData] = React.useState({name: '', email: ''})
   const navigate = useNavigate();
   const location = useLocation()
@@ -39,8 +41,9 @@ function App() {
     mainApi.getMovies()
       .then((res) => setMyMovies(res))
       .catch(console.error)
-  }, [buttonChanged])
+  }, [])
 
+  
   React.useEffect(() => {
     function changeWidthWithTimeout() {
       let previosCall = this.lastCall
@@ -66,6 +69,12 @@ function App() {
   }, [checked, movies])
 
   React.useEffect(() => {
+    isShortMyMovies();
+  }, [checked, myMovies])
+
+
+
+  React.useEffect(() => {
     const localMovies = JSON.parse(window.localStorage.getItem('movies'));
     const localInputValue = window.localStorage.getItem('input');
     if (!localMovies) {
@@ -83,7 +92,9 @@ function App() {
 
   const handleAddMovie = (movie) => {
     mainApi.saveMovie(movie)
-      .then(() => setButtonChanged(!buttonChanged))
+      .then((mov) => {
+        setMyMovies([mov, ...myMovies]);
+      })
       .catch(console.error)
   };
 
@@ -156,15 +167,17 @@ function App() {
     };
   };
 
-  const handleCheck = () => {
-    if (checked) {
-      setChecked(false)
-      window.localStorage.setItem('checked', JSON.stringify(false));
-    } else {
-      setChecked(true)
-      window.localStorage.setItem('checked', JSON.stringify(true));
-    } 
-  }
+  const handleMyMovieSearch = (e) => {
+    e.preventDefault();
+    changeNumberOfMovies()
+    setIsLoad(true);
+    if (loggedIn) {
+      const foundMovies = myMovies.filter((movie) => {
+        return (movie.nameRU.toLowerCase().includes(findMovie.toLowerCase()) || movie.nameEN.toLowerCase().includes(findMovie.toLowerCase()))
+      });
+      setMyMovies(foundMovies);
+    };
+  };
 
   const isShortMovies = () => {
     setIsLoad(true)
@@ -180,14 +193,32 @@ function App() {
     setIsLoad(false);
   }
 
+  const handleCheck = () => {
+    if (checked) {
+      setChecked(false)
+      window.localStorage.setItem('checked', JSON.stringify(false));
+    } else {
+      setChecked(true)
+      window.localStorage.setItem('checked', JSON.stringify(true));
+    } 
+  }
+
+  const isShortMyMovies = () => {
+    setIsLoad(true)
+    allMyMovies = myMovies;
+    if (checked) {
+      const shortMyMovies = myMovies.filter((movie) => {
+        return (movie.duration <= 40)
+      });
+      setFilteredMyMovies(shortMyMovies);
+    } else {
+      setFilteredMyMovies(allMyMovies);
+    }
+    setIsLoad(false);
+  }
+
   const handleRegister = (email, name, password) => {
-    auth.register(email, name, password)
-      .then((res) => {
-        if (res) {
-          navigate('/signin', {replace: true});
-        }
-      })
-      .catch(console.error);
+    return auth.register(email, name, password)
   };
   
   const handleLogin = () => {
@@ -226,12 +257,17 @@ function App() {
           />} />
           <Route path="/saved-movies" element={<ProtectedRouteElement
             element={SavedMovies}
-            movies={myMovies}
+            movies={filteredMyMovies}
             loggedIn={loggedIn}
             handleDeleteMovie={handleDeleteMovie}
             setNumberOfMovies={setNumberOfMovies}
             numberOfMovies={numberOfMovies}
             numberMoreMovies={numberMoreMovies}
+            handleMyMovieSearch={handleMyMovieSearch}
+            handleCheck={handleCheck}
+            checked={checked}
+            findMovie={findMovie}
+            handleMovieName={handleMovieName}
           />} />
           <Route path="/profile" element={<ProtectedRouteElement
             element={Profile}
@@ -239,8 +275,17 @@ function App() {
             handleLogout={handleLogout}
             handleUpdateUser={handleUpdateUser}
           />} />
-          <Route path="/signin" element={<Login handleLogin={handleLogin} />} />
-          <Route path="/signup" element={<Register handleRegister={handleRegister} />} />
+          <Route path='/signin' element={<ProtectedRouteAuth
+            element={Login}
+            handleLogin={handleLogin}
+            loggedIn={loggedIn}
+          />} />
+          <Route path='/signup' element={<ProtectedRouteAuth
+            element={Register}
+            handleLogin={handleLogin}
+            handleRegister={handleRegister}
+            loggedIn={loggedIn}
+          />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Context.Provider>

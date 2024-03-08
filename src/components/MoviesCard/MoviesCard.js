@@ -14,7 +14,7 @@ function MoviesCard({ handleDeleteMovie, myMovies, movieInfo, handleAddMovie }) 
     });
   };
 
-  function handleDelete() {
+  function handleDelete() { 
     if (location.pathname === '/movies') {
       const deletedMovie = myMovies.filter((movie) => {
         return movie.movieId === movieInfo.movieId
