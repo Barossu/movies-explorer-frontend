@@ -23,7 +23,9 @@ function App() {
   const [filteredMovies, setFilteredMovies] = React.useState([]);
   const [filteredMyMovies, setFilteredMyMovies] = React.useState([]);
   const [findMovie, setFindMovie] = React.useState('');
+  const [findSavedMovie, setFindSavedMovie] = React.useState('');
   const [checked, setChecked] = React.useState(false);
+  const [checkedSavedMovie, setCheckedSavedMovie] = React.useState(false)
   const [isLoad, setIsLoad] = React.useState(false);
   const [numberOfMovies, setNumberOfMovies] = React.useState('');
   const [numberMoreMovies, setNumberMoreMovies] = React.useState('');
@@ -70,7 +72,7 @@ function App() {
 
   React.useEffect(() => {
     isShortMyMovies();
-  }, [checked, myMovies])
+  }, [checkedSavedMovie, myMovies])
 
 
 
@@ -125,7 +127,11 @@ function App() {
 
   const handleMovieName = (e) => {
     setFindMovie(e.target.value)
-  }
+  };
+
+  const handleSavedMovieName = (e) => {
+    setFindSavedMovie(e.target.value)
+  };
 
   const changeNumberOfMovies = () => {
     if (width >= 1280) {
@@ -173,7 +179,7 @@ function App() {
     setIsLoad(true);
     if (loggedIn) {
       const foundMovies = myMovies.filter((movie) => {
-        return (movie.nameRU.toLowerCase().includes(findMovie.toLowerCase()) || movie.nameEN.toLowerCase().includes(findMovie.toLowerCase()))
+        return (movie.nameRU.toLowerCase().includes(findSavedMovie.toLowerCase()) || movie.nameEN.toLowerCase().includes(findSavedMovie.toLowerCase()))
       });
       setMyMovies(foundMovies);
     };
@@ -203,10 +209,18 @@ function App() {
     } 
   }
 
+  const handleCheckSaved = () => {
+    if (checkedSavedMovie) {
+      setCheckedSavedMovie(false);
+    } else {
+      setCheckedSavedMovie(true);
+    };
+  }
+
   const isShortMyMovies = () => {
     setIsLoad(true)
     allMyMovies = myMovies;
-    if (checked) {
+    if (checkedSavedMovie) {
       const shortMyMovies = myMovies.filter((movie) => {
         return (movie.duration <= 40)
       });
@@ -264,10 +278,10 @@ function App() {
             numberOfMovies={numberOfMovies}
             numberMoreMovies={numberMoreMovies}
             handleMyMovieSearch={handleMyMovieSearch}
-            handleCheck={handleCheck}
-            checked={checked}
-            findMovie={findMovie}
-            handleMovieName={handleMovieName}
+            handleCheck={handleCheckSaved}
+            checked={checkedSavedMovie}
+            findMovie={findSavedMovie}
+            handleMovieName={handleSavedMovieName}
           />} />
           <Route path="/profile" element={<ProtectedRouteElement
             element={Profile}

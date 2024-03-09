@@ -13,6 +13,7 @@ function Login({ handleLogin }) {
   const [emailError, setEmailError] = React.useState('Почта не может быть пустой');
   const [passwordError, setPasswordError] = React.useState('Пароль не может быть пустым');
   const [formValid, setFormValid] = React.useState('false');
+  const [serverErr, setServerErr] = React.useState('');
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -49,12 +50,18 @@ function Login({ handleLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     auth.authorize(email, password)
-      .then(() => {
-        handleLogin()
-        navigate('/movies', {replace: true});
-        setPassword('');
-        setEmail('');
-
+      .then((res) => {
+        if (res.ok) {
+          handleLogin()
+          navigate('/movies', {replace: true});
+          setPassword('');
+          setEmail('');
+        } else {
+          setServerErr('Неправельный email или пароль');
+          setTimeout(() => {
+            setServerErr('')
+          }, 2500)
+        }
       })
       .catch(console.error)
   }
@@ -76,7 +83,7 @@ function Login({ handleLogin }) {
           <input onChange={handlePasswordChange} onBlur={handleBlur} value={password} className="login__input" name="password" type="password" placeholder="Пароль"></input>
           {(passwordDirty && passwordError) && <span className="login__input-error">{passwordError}</span>}
         </label>
-        <p className="login__error"></p>
+        <p className="login__error">{serverErr}</p>
         <button onClick={handleSubmit} disabled={!formValid} type="submit" className={`login__submit-button ${formValid ? 'login__submit-button_active' : 'login__submit-button_unactive'}`}>Войти</button>
       </form>
       <p className="login__text">Ещё не зарегистрированы? <Link className="login__signin-link" to='/signup'>Регистрация</Link></p>

@@ -14,7 +14,7 @@ function Movies({
   setNumberOfMovies,
   numberOfMovies,
   numberMoreMovies,
-  handleMyMovieSearch,
+  handleMyMovieSearch, 
   handleCheck,
   checked,
   findMovie,
