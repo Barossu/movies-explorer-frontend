@@ -192,7 +192,7 @@ function App() {
     changeNumberOfMovies()
     setIsLoad(true);
     if (loggedIn) {
-      const foundMovies = myMovies.filter((movie) => {
+      const foundMovies = mainMovies.filter((movie) => {
         return (movie.nameRU.toLowerCase().includes(findSavedMovie.toLowerCase()) || movie.nameEN.toLowerCase().includes(findSavedMovie.toLowerCase()))
       });
       setMyMovies(foundMovies);
