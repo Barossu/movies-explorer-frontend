@@ -7,7 +7,7 @@ import Header from '../Header/Header.js'
 import Footer from '../Footer/Footer.js'
 import NoMovies from "../NoMovies/NoMovies.js";
 
-function Movies({
+function SavedMovies({
   handleDeleteMovie,
   movies,
   loggedIn,
@@ -18,7 +18,7 @@ function Movies({
   handleCheck,
   checked,
   findMovie,
-  handleMovieName
+  handleMovieName,
 })
   {
   const [resultMovies, setResultMovies] = React.useState([]);  
@@ -51,4 +51,4 @@ function Movies({
   )
 };
 
-export default Movies; 
+export default SavedMovies; 

@@ -29,8 +29,9 @@ function App() {
   const [isLoad, setIsLoad] = React.useState(false);
   const [numberOfMovies, setNumberOfMovies] = React.useState('');
   const [numberMoreMovies, setNumberMoreMovies] = React.useState('');
-  const [width, setWidth] = React.useState(window.innerWidth)
-  const [myMovies, setMyMovies] = React.useState([])
+  const [width, setWidth] = React.useState(window.innerWidth);
+  const [myMovies, setMyMovies] = React.useState([]);
+  const [mainMovies, setMainMovies] = React.useState([]);
   const [userData, setUserData] = React.useState({name: '', email: ''})
   const navigate = useNavigate();
   const location = useLocation()
@@ -41,7 +42,10 @@ function App() {
 
   React.useEffect(() => {
     mainApi.getMovies()
-      .then((res) => setMyMovies(res))
+      .then((res) => {
+        setMyMovies(res);
+        setMainMovies(res);
+      })
       .catch(console.error)
   }, [])
 
@@ -91,6 +95,16 @@ function App() {
     }
     setChecked(JSON.parse(window.localStorage.getItem('checked')));
   }, [])
+
+  React.useEffect(() => {
+    clearSearchInputs()
+  }, [location.pathname])
+
+  const clearSearchInputs = () => {
+    setCheckedSavedMovie(false);
+    setFindSavedMovie('');
+    setMyMovies(mainMovies)
+  }
 
   const handleAddMovie = (movie) => {
     mainApi.saveMovie(movie)
