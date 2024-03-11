@@ -110,6 +110,7 @@ function App() {
     mainApi.saveMovie(movie)
       .then((mov) => {
         setMyMovies([mov, ...myMovies]);
+        setMainMovies([mov, ...mainMovies]);
       })
       .catch(console.error)
   };
@@ -118,6 +119,7 @@ function App() {
     mainApi.deleteMovie(movie)
       .then(() => {
         setMyMovies((state) => state.filter((m) => m !== movie))
+        setMainMovies((state) => state.filter((m) => m !== movie))
       })
       .catch(console.error)
   }
