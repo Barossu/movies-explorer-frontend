@@ -32,7 +32,7 @@ function App() {
   const [width, setWidth] = React.useState(window.innerWidth);
   const [myMovies, setMyMovies] = React.useState([]);
   const [mainMovies, setMainMovies] = React.useState([]);
-  const [userData, setUserData] = React.useState({name: '', email: ''})
+  const [userData, setUserData] = React.useState({name: '', email: '', id: ''});
   const navigate = useNavigate();
   const location = useLocation()
 
@@ -40,14 +40,14 @@ function App() {
     handleLoggedinCheck()
   }, [loggedIn])
 
-  React.useEffect(() => {
-    mainApi.getMovies()
-      .then((res) => {
-        setMyMovies(res);
-        setMainMovies(res);
-      })
-      .catch(console.error)
-  }, [])
+  // React.useEffect(() => {
+  //   mainApi.getMovies()
+  //     .then((res) => {
+  //       setMyMovies(res);
+  //       setMainMovies(res);
+  //     })
+  //     .catch(console.error)
+  // }, [loggedIn])
 
   
   React.useEffect(() => {
@@ -136,6 +136,12 @@ function App() {
         setLoggedIn(true);
         setUserData({ name: res.name, email: res.email });
         navigate(location.pathname, {replace: true});
+        mainApi.getMovies()
+          .then((res) => {
+            setMyMovies(res);
+            setMainMovies(res);
+          })
+          .catch(console.error)
       } 
     })
     .catch(console.error)
